@@ -1,0 +1,27 @@
+{
+  /* ============================================================================
+   * RuneSchema Assets Template (Currently commented out so it makes no changes)
+   *
+   * Option A: Modify an existing game asset's properties (like crop yield)
+   * Option B: Clone an existing item ($Clone) to create a brand-new item
+   * ============================================================================
+
+  // --- Option A: Modify an existing DataAsset ---
+  "/Game/Gameplay/Farming/Plants/FPD_Cabbage.FPD_Cabbage": {
+    "BaseYield": 10
+  },
+
+  // --- Option B: Clone an existing item to create a custom item ---
+  "/Game/Mods/MyFirstMod/Items/ITEM_MyCustomCape.ITEM_MyCustomCape": {
+    "$Clone": "/Game/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Trimmed_Skillcape_Attack.ITEM_Cape_Trimmed_Skillcape_Attack",
+    "InternalName": "mycustomcape",
+    "PersistenceID": "MyFirstMod_CustomCape_001",
+    "Name": "My Custom Cape",
+    "FlavourText": "A custom cape created with RuneSchema!",
+    "SkillPerkRequiredToEquip": null,
+    "GrantedEffects": [],
+    "BuffDatas": []
+  }
+
+  */
+}

@@ -1,0 +1,22 @@
+# MyFirstMod - Settings
+#
+# Edit these values and restart the game, or change them live in-game via Esc > MODS (Mod Menu).
+# Lines starting with # are ignored.
+
+# Master switch for the mod
+Enabled = true
+
+# Example decimal multiplier slider (0.1x to 10.0x)
+Multiplier = 1.0
+
+# Example whole-number setting (0 to 50)
+BonusAmount = 5
+
+# Example mode selection (Simple, Detailed, Off)
+Mode = Detailed
+
+# Keybind to trigger your custom action in-game (requires restart if changed)
+Hotkey = F9
+
+# Verbose logging in UE4SS console/log
+Verbose = true

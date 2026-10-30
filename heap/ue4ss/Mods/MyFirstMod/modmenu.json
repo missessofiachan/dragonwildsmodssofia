@@ -1,0 +1,156 @@
+{
+  "schema": 1,
+  "id": "LuaHeapCleaner",
+  "name": "Lua Heap Cleaner & Optimizer",
+  "author": "Sofia",
+  "version": "1.1.0",
+  "description": "Reduces UE4SS Lua heap bloat, GC stutter spikes, and stale UObject userdata crashes via frame-budgeted GameThread GC micro-stepping, generational collection, and world-transition heap flushes.",
+  "runsOn": "yours",
+  "settings": [
+    {
+      "key": "Enabled",
+      "type": "toggle",
+      "label": "Enable Lua Heap Cleaner",
+      "default": true,
+      "tooltip": "Master switch for the Lua Heap Cleaner and GC Pacer."
+    },
+    {
+      "type": "header",
+      "label": "Lua Garbage Collector Pacing"
+    },
+    {
+      "key": "GCMode",
+      "type": "choice",
+      "label": "Collector Strategy",
+      "options": [
+        "StepPacer",
+        "Generational",
+        "TunedIncremental"
+      ],
+      "default": "StepPacer",
+      "tooltip": "StepPacer: Frame-budgeted micro-steps on the game thread (prevents 20-40ms GC freezes). Generational: Lua 5.4 generational GC for short-lived userdata. TunedIncremental: Tightened incremental GC."
+    },
+    {
+      "key": "StepIntervalMs",
+      "type": "slider",
+      "label": "GC Step Interval",
+      "min": 50,
+      "max": 1000,
+      "step": 50,
+      "suffix": " ms",
+      "default": 250,
+      "tooltip": "How often the GameThread GC pacer runs a micro-collection step (lower = smoother, more frequent micro-steps)."
+    },
+    {
+      "key": "StepSizeKB",
+      "type": "slider",
+      "label": "GC Micro-Step Work Size",
+      "min": 1,
+      "max": 64,
+      "step": 1,
+      "suffix": " KB",
+      "default": 8,
+      "tooltip": "Maximum amount of work performed per incremental GC step interval."
+    },
+    {
+      "key": "RestThresholdKB",
+      "type": "slider",
+      "label": "Post-Cycle Rest Threshold",
+      "min": 64,
+      "max": 2048,
+      "step": 64,
+      "suffix": " KB",
+      "default": 256,
+      "tooltip": "After completing a full GC cycle, pause stepping until the heap grows by this many KB."
+    },
+    {
+      "key": "MaxStepBudgetMs",
+      "type": "slider",
+      "label": "Max Frame Time Budget",
+      "min": 0.5,
+      "max": 8.0,
+      "step": 0.5,
+      "decimals": 1,
+      "suffix": " ms",
+      "default": 2.0,
+      "tooltip": "Maximum milliseconds allowed per GC step interval so garbage collection never causes a frame hitch."
+    },
+    {
+      "key": "SoftCapKB",
+      "type": "slider",
+      "label": "Heap Soft Cap (Emergency Flush)",
+      "min": 1024,
+      "max": 16384,
+      "step": 512,
+      "suffix": " KB",
+      "default": 4096,
+      "tooltip": "If the Lua heap exceeds this threshold, forces a full garbage collection cycle to purge stale UObject wrappers."
+    },
+    {
+      "type": "header",
+      "label": "World Transition & Engine Hygiene"
+    },
+    {
+      "key": "CleanOnWorldChange",
+      "type": "toggle",
+      "label": "Flush Heap on World / Map Load",
+      "default": true,
+      "tooltip": "Immediately runs a full double GC cycle when changing worlds or returning to menu so dangling UObject pointers are freed before they can crash UE4SS."
+    },
+    {
+      "key": "EngineGCAssist",
+      "type": "toggle",
+      "label": "Periodic UE5 Engine GC Assist",
+      "default": false,
+      "tooltip": "Periodically calls Unreal Engine's KismetSystemLibrary::CollectGarbage on the game thread after flushing Lua userdata."
+    },
+    {
+      "key": "EngineGCIntervalSec",
+      "type": "slider",
+      "label": "Engine GC Assist Interval",
+      "min": 60,
+      "max": 600,
+      "step": 30,
+      "suffix": " s",
+      "default": 180,
+      "tooltip": "Seconds between Unreal Engine CollectGarbage calls when Periodic UE5 Engine GC Assist is enabled."
+    },
+    {
+      "type": "header",
+      "label": "Diagnostics & Controls"
+    },
+    {
+      "key": "TelemetryLog",
+      "type": "toggle",
+      "label": "Log 60s Heap Telemetry",
+      "default": true,
+      "tooltip": "Writes a 60-second summary of Lua heap usage, GC step times, freed KB, and completed cycles to UE4SS.log."
+    },
+    {
+      "key": "Verbose",
+      "type": "toggle",
+      "label": "Verbose Debug Logging",
+      "default": false,
+      "tooltip": "Logs individual GC cycle completions, soft-cap flushes, and world transition cleanups."
+    },
+    {
+      "key": "FlushHotkey",
+      "type": "key",
+      "label": "Force Heap Flush Hotkey",
+      "default": "F10",
+      "tooltip": "Press this key in-game to immediately run a full Lua heap collection and log freed memory."
+    },
+    {
+      "type": "button",
+      "label": "FORCE FULL HEAP CLEANUP NOW",
+      "action": "flush_now",
+      "tooltip": "Immediately executes a full double-pass Lua garbage collection cycle and logs memory before/after."
+    },
+    {
+      "type": "button",
+      "label": "LOG HEAP TELEMETRY SNAPSHOT",
+      "action": "log_stats",
+      "tooltip": "Prints current Lua heap size, peak heap, total freed memory, and GC latency stats to UE4SS.log."
+    }
+  ]
+}

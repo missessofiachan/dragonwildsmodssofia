@@ -1,0 +1,86 @@
+{
+  "schema": 1,
+  "id": "MyFirstMod",
+  "name": "My First Mod",
+  "author": "You",
+  "version": "1.0.0",
+  "description": "Starter template combining UE4SS Lua scripting, live Mod Menu 2.0 settings, and RuneSchema JSON templates.",
+  "runsOn": "yours",
+  "settings": [
+    {
+      "key": "Enabled",
+      "type": "toggle",
+      "label": "Enable Mod",
+      "default": true,
+      "tooltip": "Master switch to turn My First Mod on or off."
+    },
+    {
+      "type": "header",
+      "label": "Gameplay Tweaks"
+    },
+    {
+      "key": "Multiplier",
+      "type": "slider",
+      "label": "Multiplier",
+      "min": 0.1,
+      "max": 10.0,
+      "step": 0.1,
+      "decimals": 1,
+      "suffix": "x",
+      "default": 1.0,
+      "tooltip": "Example decimal slider that updates live."
+    },
+    {
+      "key": "BonusAmount",
+      "type": "number",
+      "label": "Bonus Amount",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "default": 5,
+      "tooltip": "Example whole-number slider.",
+      "valueLabels": {
+        "0": "Off",
+        "50": "Max"
+      }
+    },
+    {
+      "key": "Mode",
+      "type": "choice",
+      "label": "Operation Mode",
+      "options": [
+        "Simple",
+        "Detailed",
+        "Off"
+      ],
+      "default": "Detailed",
+      "tooltip": "Example multi-choice selector."
+    },
+    {
+      "type": "header",
+      "label": "Controls & Debug",
+      "collapsed": false
+    },
+    {
+      "key": "Hotkey",
+      "type": "key",
+      "label": "Action Hotkey",
+      "default": "F9",
+      "tooltip": "Press this key in-game to run your test action. Applies after restart.",
+      "restart": true
+    },
+    {
+      "key": "Verbose",
+      "type": "toggle",
+      "label": "Verbose Logging",
+      "default": true,
+      "tooltip": "Print extra debug info to the UE4SS console and log."
+    },
+    {
+      "type": "button",
+      "label": "TEST ACTION",
+      "action": "test_button",
+      "tooltip": "Click to send an immediate test action to main.lua."
+    }
+  ]
+}

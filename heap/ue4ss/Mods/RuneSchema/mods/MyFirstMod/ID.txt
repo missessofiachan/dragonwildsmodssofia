@@ -1,0 +1,8 @@
+# Dragonwilds Sync ID v1
+# Uncomment the lines below when you are ready to enable the RuneSchema portion of your mod:
+# Schema: DragonwildsSync.ID.v1
+# ModID: MyFirstMod
+# Name: My First Mod
+# Author: You
+# RuntimeRole: both
+# HOTLOAD = NO

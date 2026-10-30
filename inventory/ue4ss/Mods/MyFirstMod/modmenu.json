@@ -1,0 +1,142 @@
+{
+  "schema": 1,
+  "id": "MyFirstMod",
+  "name": "Sofia's Configurable Inventory",
+  "author": "Sofia",
+  "version": "1.3.0",
+  "description": "Configurable slot counts for all 4 Player Inventory Tabs (Main Bag, Runes, Ammo, Quest Items) and Storage Chests with smart item relocation, save-load item protection, and non-destructive weight scaling.",
+  "runsOn": "yours",
+  "settings": [
+    {
+      "key": "Enabled",
+      "type": "toggle",
+      "label": "Enable Configurable Inventory",
+      "default": true,
+      "tooltip": "Master switch for Sofia's Configurable Inventory. Turning this off restores vanilla tab sizes while protecting items in high slots."
+    },
+    {
+      "type": "header",
+      "label": "Player Inventory Tabs"
+    },
+    {
+      "key": "BagSlots",
+      "type": "slider",
+      "label": "Main Bag Slots",
+      "min": 24,
+      "max": 160,
+      "step": 4,
+      "suffix": " slots",
+      "default": 96,
+      "tooltip": "Number of slots in the Main Items tab (Vanilla: 32). Supports steps of 4."
+    },
+    {
+      "key": "RuneSlots",
+      "type": "slider",
+      "label": "Runes Tab Slots",
+      "min": 24,
+      "max": 96,
+      "step": 4,
+      "suffix": " slots",
+      "default": 48,
+      "tooltip": "Number of slots in the Runes tab (Vanilla: 24). Supports steps of 4."
+    },
+    {
+      "key": "AmmoSlots",
+      "type": "slider",
+      "label": "Ammo Tab Slots",
+      "min": 24,
+      "max": 96,
+      "step": 4,
+      "suffix": " slots",
+      "default": 48,
+      "tooltip": "Number of slots in the Arrows & Bolts tab (Vanilla: 24). Supports steps of 4."
+    },
+    {
+      "key": "QuestSlots",
+      "type": "slider",
+      "label": "Quest Items Tab Slots",
+      "min": 24,
+      "max": 96,
+      "step": 4,
+      "suffix": " slots",
+      "default": 72,
+      "tooltip": "Number of slots in the Quest Items tab (Vanilla: 24). Supports steps of 4."
+    },
+    {
+      "type": "header",
+      "label": "Storage Chest Expansion"
+    },
+    {
+      "key": "ChestEnabled",
+      "type": "toggle",
+      "label": "Expand Player Storage Chests",
+      "default": true,
+      "tooltip": "Expands player-built storage containers while safely skipping crafting and processing stations."
+    },
+    {
+      "key": "ChestSlots",
+      "type": "slider",
+      "label": "Storage Chest Slots",
+      "min": 16,
+      "max": 160,
+      "step": 4,
+      "suffix": " slots",
+      "default": 64,
+      "tooltip": "Number of slots in player-built storage chests. Lowering this compacts items into earlier slots automatically."
+    },
+    {
+      "type": "header",
+      "label": "Item Weight & UI Options"
+    },
+    {
+      "key": "NoWeight",
+      "type": "toggle",
+      "label": "Weightless Items (Zero Weight)",
+      "default": false,
+      "tooltip": "Sets all item weights to 0.0 non-destructively in memory. Disabling restores original weights immediately."
+    },
+    {
+      "key": "WeightScale",
+      "type": "slider",
+      "label": "Item Weight Multiplier",
+      "min": 0.1,
+      "max": 1.0,
+      "step": 0.1,
+      "decimals": 1,
+      "suffix": "x",
+      "default": 1.0,
+      "tooltip": "Scales all item weights when Weightless Items is off (e.g. 0.5x = half weight, 1.0x = vanilla weight)."
+    },
+    {
+      "key": "HideScrollBar",
+      "type": "toggle",
+      "label": "Hide Inventory Scroll Bar",
+      "default": true,
+      "tooltip": "Collapses the vertical scroll bar visual while keeping mouse-wheel scrolling active."
+    },
+    {
+      "type": "header",
+      "label": "Controls & Diagnostics"
+    },
+    {
+      "key": "Hotkey",
+      "type": "key",
+      "label": "Force Apply & Relocate Hotkey",
+      "default": "F9",
+      "tooltip": "Press this key in-game to re-apply all slot sizes, rebuild UI grids, and relocate misplaced items."
+    },
+    {
+      "key": "Verbose",
+      "type": "toggle",
+      "label": "Verbose Debug Logging",
+      "default": false,
+      "tooltip": "Prints detailed template patching, UI rebuilding, and item relocation logs to UE4SS.log."
+    },
+    {
+      "type": "button",
+      "label": "APPLY SLOTS & RELOCATE ITEMS NOW",
+      "action": "apply_slots",
+      "tooltip": "Immediately applies current tab & chest sizes, rebuilds inventory UI grids, and migrates items into their proper tabs."
+    }
+  ]
+}

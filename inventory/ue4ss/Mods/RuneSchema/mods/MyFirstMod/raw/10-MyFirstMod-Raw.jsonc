@@ -1,0 +1,19 @@
+{
+  /* ============================================================================
+   * RuneSchema Raw DataTable Template (Currently commented out)
+   *
+   * Overrides or adds rows to existing Unreal DataTables (e.g., equipment stats).
+   * ============================================================================
+
+  "/Game/Gameplay/Character/Player/Equipment/DT_WearableEquipment.DT_WearableEquipment": {
+    "mycustomcape": {
+      "Defense": 10.0,
+      "MeleeResistance": 5,
+      "RangedResistance": 5,
+      "MagicResistance": 5,
+      "MaxVitalShield": 20
+    }
+  }
+
+  */
+}

@@ -1,0 +1,15 @@
+# Sofia's Configurable Inventory (MyFirstMod) Configuration
+# Slot counts support multiples of 4 (e.g. 24, 28, 32 ... 160).
+
+Enabled = true
+BagSlots = 96
+RuneSlots = 48
+AmmoSlots = 48
+QuestSlots = 72
+ChestEnabled = true
+ChestSlots = 64
+NoWeight = false
+WeightScale = 1.0
+HideScrollBar = true
+Hotkey = "F9"
+Verbose = false

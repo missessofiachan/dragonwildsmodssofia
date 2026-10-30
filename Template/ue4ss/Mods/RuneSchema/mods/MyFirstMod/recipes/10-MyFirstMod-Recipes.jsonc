@@ -1,0 +1,37 @@
+{
+  /* ============================================================================
+   * RuneSchema Recipes Template (Currently commented out so it makes no changes)
+   *
+   * Adds a crafting recipe to an in-game crafting station DataTable.
+   * ============================================================================
+
+  "RECIPE_MyCustomCape": {
+    "PersistenceID": "MyFirstMod_Recipe_CustomCape_001",
+    "AddTo": [
+      {
+        "DataTable": "/Game/Gameplay/World/Stations/DT_CraftingStationsDataTable.DT_CraftingStationsDataTable",
+        "Row": "MysticForge",
+        "Category": "Capes of Achievement"
+      }
+    ],
+    "Properties": {
+      "ItemsConsumed": [
+        {
+          "ItemData": "/Game/Gameplay/Items/Resources/Textiles/ITEM_Resources_Cloth_Wool.ITEM_Resources_Cloth_Wool",
+          "Count": 2
+        }
+      ],
+      "ItemsCreated": [
+        {
+          "ItemData": "/Game/Mods/MyFirstMod/Items/ITEM_MyCustomCape.ITEM_MyCustomCape",
+          "Count": 1
+        }
+      ],
+      "SkillUsedToCraft": "/Game/Gameplay/Character/Player/Skills/SKILL_Artisan.SKILL_Artisan"
+    },
+    "Order": 200,
+    "Unlock": true
+  }
+
+  */
+}
